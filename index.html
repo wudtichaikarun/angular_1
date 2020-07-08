@@ -5,11 +5,14 @@
     <div
       ng-app="myApp"
       ng-controller="myCtrl"
-      ng-init="quantity=1;cost=5;person={firstName:'John',lastName:'Doe'};points=[1,15,19,2,40]"
+      ng-init="quantity=1;cost=5;person={firstName:'John',lastName:'Doe'};points=[1,15,19,2,40];names=['Jani','Hege','Kai'];objNames=[
+      {name:'Jani',country:'Norway'},
+      {name:'Hege',country:'Sweden'},
+      {name:'Kai',country:'Denmark'}]"
     >
       <!-- binding value -->
-      First Name: <input type="text" ng-model="firstName" /><br />
-      Last Name: <input type="text" ng-model="lastName" /><br />
+      First Name: <input type="text" ng-model="firstName" /> Last Name:
+      <input type="text" ng-model="lastName" /><br />
       <br />
       <p>
         Full Name: {{firstName + " " + lastName}}
@@ -32,6 +35,37 @@
       <br />
       <p>The third result is <span ng-bind="points[2]"></span></p>
       <p>The third result is {{ points[2] }}</p>
+
+      <!-- directives -->
+      <br />
+      Quantity: <input type="number" ng-model="quantity" /> Costs:
+      <input type="number" ng-model="cost" />
+
+      Total in dollar: {{ quantity * cost }}
+
+      <!-- The ng-repeat Array directive repeats an HTML element -->
+      <br />
+      <ul>
+        <li ng-repeat="name in names">
+          {{ name }}
+        </li>
+      </ul>
+
+      <!-- The ng-repeat Object directive repeats an HTML element -->
+      <ul>
+        <li ng-repeat="obj in objNames">
+          {{ obj.name + ', ' + obj.country }}
+        </li>
+      </ul>
+
+      <!-- custom directive -->
+      <br />
+      <!-- Element name -->
+      <!-- <w3-test-directive></w3-test-directive> -->
+      <!-- Attribute -->
+      <!-- <div w3-test-directive></div> -->
+      <!-- Class -->
+      <div class="w3-test-directive"></div>
     </div>
 
     <script>
@@ -40,6 +74,19 @@
         $scope.firstName = "John";
         $scope.lastName = "Doe";
         $scope.fullName = $scope.firstName + $scope.lastName;
+      });
+      app.directive("w3TestDirective", function () {
+        return {
+          /**
+          E for Element name
+          A for Attribute
+          C for Class
+          M for Comment
+          By default the value is EA, meaning that both Element names and attribute names can invoke the directive.
+          **/
+          restrict: "C",
+          template: "<h1>Made by a directive!</h1>",
+        };
       });
     </script>
   </body>
