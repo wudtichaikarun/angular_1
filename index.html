@@ -11,12 +11,16 @@
       {name:'Kai',country:'Denmark'}]"
     >
       <!-- With the ng-model directive you can bind the value of an input field to a variable created in AngularJS. -->
+      <h2>- Two-way Binding</h2>
       First Name: <input type="text" ng-model="firstName" /> Last Name:
       <input type="text" ng-model="lastName" /><br />
       <br />
       <p>
         Full Name: {{firstName + " " + lastName}}
       </p>
+      <button ng-click="changeName()">
+        Click for change firstName to Nelly
+      </button>
       <hr />
 
       <h2>- value from controller</h2>
@@ -89,6 +93,9 @@
         $scope.firstName = "John";
         $scope.lastName = "Doe";
         $scope.fullName = $scope.firstName + $scope.lastName;
+        $scope.changeName = function () {
+          $scope.firstName = "Nelly";
+        };
       });
       app.directive("w3TestDirective", function () {
         return {
