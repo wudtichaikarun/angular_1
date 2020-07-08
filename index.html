@@ -10,62 +10,77 @@
       {name:'Hege',country:'Sweden'},
       {name:'Kai',country:'Denmark'}]"
     >
-      <!-- binding value -->
+      <!-- With the ng-model directive you can bind the value of an input field to a variable created in AngularJS. -->
       First Name: <input type="text" ng-model="firstName" /> Last Name:
       <input type="text" ng-model="lastName" /><br />
       <br />
       <p>
         Full Name: {{firstName + " " + lastName}}
       </p>
-      <!-- value from controller -->
+      <hr />
+
+      <h2>- value from controller</h2>
       <p>
         Full Name Value from Controller : {{fullName}}
       </p>
+      <hr />
 
-      <!-- ng-init -->
-      <br />
+      <h2>- ng-init</h2>
       <p>Total in dollar: {{ quantity * cost }}</p>
+      <hr />
 
-      <!-- ng-init object -->
-      <br />
+      <h2>- ng-init object</h2>
       <p>The name is <span ng-bind="person.lastName"></span></p>
       <p>The name is {{ person.lastName }}</p>
+      <hr />
 
-      <!-- ng-init array -->
-      <br />
+      <h2>- ng-init array</h2>
       <p>The third result is <span ng-bind="points[2]"></span></p>
       <p>The third result is {{ points[2] }}</p>
+      <hr />
 
-      <!-- directives -->
-      <br />
+      <h2>- directives</h2>
       Quantity: <input type="number" ng-model="quantity" /> Costs:
       <input type="number" ng-model="cost" />
 
       Total in dollar: {{ quantity * cost }}
+      <hr />
 
-      <!-- The ng-repeat Array directive repeats an HTML element -->
-      <br />
+      <h2>- The ng-repeat Array directive repeats an HTML element</h2>
       <ul>
         <li ng-repeat="name in names">
           {{ name }}
         </li>
       </ul>
 
-      <!-- The ng-repeat Object directive repeats an HTML element -->
+      <h2>- The ng-repeat Object directive repeats an HTML element</h2>
       <ul>
         <li ng-repeat="obj in objNames">
           {{ obj.name + ', ' + obj.country }}
         </li>
       </ul>
+      <hr />
 
-      <!-- custom directive -->
-      <br />
+      <h2>- custom directive</h2>
       <!-- Element name -->
       <!-- <w3-test-directive></w3-test-directive> -->
       <!-- Attribute -->
       <!-- <div w3-test-directive></div> -->
       <!-- Class -->
       <div class="w3-test-directive"></div>
+      <hr />
+
+      <h2>
+        - The ng-model directive can provide status for application data (valid,
+        dirty, touched, error):
+      </h2>
+      <form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+        Email:
+        <input type="email" name="myAddress" ng-model="myText" required />
+        <h1>Status</h1>
+        valid:{{myForm.myAddress.$valid}} dirty:{{myForm.myAddress.$dirty}}
+        touched: {{myForm.myAddress.$touched}}
+      </form>
     </div>
 
     <script>
